@@ -1,13 +1,1 @@
-const express = require('express');
-const cors = require('cors');
-const app = express();
-app.use(cors());
-app.use(express.json());
-const PORT = process.env.PORT || 4001;
-app.get('/api/profile', (_, res) => res.json({ username: 'Player', balance: 2000, avatar: '/avatar.png' }));
-app.get('/api/game/battles', (_, res) => { res.json({ mode: 'Battles', players: ['Player', 'Enemy'], winner: Math.random() < 0.5 ? 'Player' : 'Enemy' }); });
-app.get('/api/game/cases', (_, res) => { const rewards = ['Knife', 'AWP Dragon Lore', 'M4A4 Howl', 'AK-47 Fire Serpent']; const item = rewards[Math.floor(Math.random() * rewards.length)];res.json({ mode: 'Cases', reward: item }); });
-app.get('/api/game/upgrader', (_, res) => { const win = Math.random() < 0.5;res.json({ mode: 'Upgrader', result: win ? 'Win' : 'Lose' }); });
-app.get('/api/game/roulette', (_, res) => { const colors = ['Red', 'Black', 'Green'];const color = colors[Math.floor(Math.random() * colors.length)];res.json({ mode: 'Roulette', outcome: color }); });
-app.get('/api/game/bomb', (_, res) => { const level = Math.ceil(Math.random() * 5);const result = Math.random() < 0.7;res.json({ mode: 'Bomb Rush', level, survived: result }); });
-app.listen(PORT, () => console.log(`Backend running on port ${PORT}`));
+
